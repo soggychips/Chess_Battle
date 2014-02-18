@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Piece : MonoBehaviour {
 	public Material[] materialTypes_white;
@@ -77,4 +78,54 @@ public class Piece : MonoBehaviour {
 		type = t;
 		typeChange = true;
 	}
+
+	public List<Vector2> GetPossibleMoveLocations(Vector2 position){
+		int[,] currentBoardLayout = board.BoardSpaces;
+		List<Vector2> moves = new List<Vector2>();
+		switch(type){
+		case (int)Type.President:
+			foreach(Vector2 space in GetPresidentMovementVectors()){
+				if(currentBoardLayout[(int)space.x,(int)space.y] != team) moves.Add(space);
+			}
+			break;
+		case (int)Type.General:
+			break;
+		case (int)Type.Officer:
+			break;
+		case (int)Type.Recon:
+			break;
+		case (int)Type.Sniper:
+			break;
+		case (int)Type.Soldier:
+			foreach(Vector2 space in GetSoldierMovementVectors()){
+				if(currentBoardLayout[(int)space.x,(int)space.y] != team) moves.Add(space);
+			}
+			break;
+		}
+	}
+
+	public List<Vector2> GetPresidentMovementVectors(){ //1 unit in all 8 directions
+		List<Vector2> moves = new List<Vector2>();
+		moves.Add(Vector2.right);
+		moves.Add(new Vector2(1,1));
+		moves.Add(Vector2.up);
+		moves.Add(new Vector2(-1,1));
+		moves.Add(-Vector2.right);
+		moves.Add(new Vector2(-1,-1));
+		moves.Add(-Vector2.up);
+		moves.Add(new Vector2(1,-1));
+		return moves;
+	}
+
+	public List<Vector2> GetSoldierMovementVectors(){ //one unit in all directions except left and right
+		List<Vector2> moves = new List<Vector2>();
+		moves.Add(new Vector2(1,1));
+		moves.Add(Vector2.up);
+		moves.Add(new Vector2(-1,1));
+		moves.Add(new Vector2(-1,-1));
+		moves.Add(-Vector2.up);
+		moves.Add(new Vector2(1,-1));
+		return moves;
+	}
+
 }

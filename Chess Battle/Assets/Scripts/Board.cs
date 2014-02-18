@@ -3,10 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Board : MonoBehaviour {
+	public enum Spaces{White,Black,Open};
+
 	public GameObject tile_prefab, piece_prefab;
 	private List<Piece> whiteTeam, blackTeam;
-
+	private int[,] boardSpaces;
 	private Tile[,] tiles;
+
+	public int[,] BoardSpaces{
+		get{return boardSpaces;}
+	}
 
 	public Tile[,] Tiles{
 		get{return tiles;}
@@ -27,6 +33,7 @@ public class Board : MonoBehaviour {
 
 	void SetupBoard(){
 		tiles = new Tile[8,8];
+		boardSpaces = new int[8,8];
 		for(int i=0;i<8;i++){
 			for(int j=0;j<8;j++){
 				//instantiate
@@ -34,6 +41,7 @@ public class Board : MonoBehaviour {
 				GameObject tile = Instantiate(tile_prefab,location,Quaternion.AngleAxis(-90.0f,Vector3.right)) as GameObject;
 				tile.transform.parent= this.transform;
 				tiles[i,j] = tile.GetComponent<Tile>();
+				boardSpaces[i,j] = (int)Spaces.Open;
 			}
 		}
 	}
@@ -85,7 +93,10 @@ public class Board : MonoBehaviour {
 	}
 
 	void CreatePiece(Vector2 tileLocation, int team, int type){
-
+		if(team == Piece.Team.White)
+			boardSpaces[(int)tileLocation.x,(int)tileLocation.y] = (int)Spaces.White;
+		else if(team == Piece.Team.Black)
+			boardSpaces[(int)tileLocation.x,(int)tileLocation.y] = (int)Spaces.Black;
 		GameObject piece = Instantiate(piece_prefab,Vector3.zero,Quaternion.AngleAxis(-90.0f,Vector3.right)) as GameObject;
 		piece.transform.RotateAround(transform.position,Vector3.forward,180.0f);
 		piece.transform.parent = this.transform;
