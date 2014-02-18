@@ -93,9 +93,9 @@ public class Board : MonoBehaviour {
 	}
 
 	void CreatePiece(Vector2 tileLocation, int team, int type){
-		if(team == Piece.Team.White)
+		if(team == (int)Piece.Team.White)
 			boardSpaces[(int)tileLocation.x,(int)tileLocation.y] = (int)Spaces.White;
-		else if(team == Piece.Team.Black)
+		else if(team == (int)Piece.Team.Black)
 			boardSpaces[(int)tileLocation.x,(int)tileLocation.y] = (int)Spaces.Black;
 		GameObject piece = Instantiate(piece_prefab,Vector3.zero,Quaternion.AngleAxis(-90.0f,Vector3.right)) as GameObject;
 		piece.transform.RotateAround(transform.position,Vector3.forward,180.0f);

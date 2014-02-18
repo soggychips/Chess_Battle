@@ -102,6 +102,8 @@ public class Piece : MonoBehaviour {
 			}
 			break;
 		}
+
+		return moves;
 	}
 
 	public List<Vector2> GetPresidentMovementVectors(){ //1 unit in all 8 directions
