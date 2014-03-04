@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Board : MonoBehaviour {
 	public GameObject tile_prefab, piece_prefab;
-	private List<Piece> whiteTeam, blackTeam;
+	private List<PieceScript> whiteTeam, blackTeam;
 
 	private Tile[,] tiles;
 
@@ -12,11 +12,11 @@ public class Board : MonoBehaviour {
 		get{return tiles;}
 	}
 
-	public List<Piece> WhiteTeam{
+	public List<PieceScript> WhiteTeam{
 		get{return whiteTeam;}
 	}
 
-	public List<Piece> BlackTeam{
+	public List<PieceScript> BlackTeam{
 		get{return blackTeam;}
 	}
 
@@ -39,47 +39,47 @@ public class Board : MonoBehaviour {
 	}
 
 	void CreatePieces(){
-		whiteTeam = new List<Piece>();
-		blackTeam = new List<Piece>();
+		whiteTeam = new List<PieceScript>();
+		blackTeam = new List<PieceScript>();
 	//white team
 		//left to right, bottom to top
-		CreatePiece(Vector2.zero,(int)Piece.Team.White,(int)Piece.Type.Officer);
-		CreatePiece(new Vector2(1,0),(int)Piece.Team.White,(int)Piece.Type.Recon);
-		CreatePiece(new Vector2(2,0),(int)Piece.Team.White,(int)Piece.Type.Sniper);
-		CreatePiece(new Vector2(3,0),(int)Piece.Team.White,(int)Piece.Type.President);
-		CreatePiece(new Vector2(3,1),(int)Piece.Team.White,(int)Piece.Type.General);
-		CreatePiece(new Vector2(5,0),(int)Piece.Team.White,(int)Piece.Type.Sniper);
-		CreatePiece(new Vector2(6,0),(int)Piece.Team.White,(int)Piece.Type.Recon);
-		CreatePiece(new Vector2(7,0),(int)Piece.Team.White,(int)Piece.Type.Officer);
+		CreatePiece(Vector2.zero,(int)PieceScript.Team.White,(int)PieceScript.Type.Officer);
+		CreatePiece(new Vector2(1,0),(int)PieceScript.Team.White,(int)PieceScript.Type.Recon);
+		CreatePiece(new Vector2(2,0),(int)PieceScript.Team.White,(int)PieceScript.Type.Sniper);
+		CreatePiece(new Vector2(3,0),(int)PieceScript.Team.White,(int)PieceScript.Type.President);
+		CreatePiece(new Vector2(3,1),(int)PieceScript.Team.White,(int)PieceScript.Type.General);
+		CreatePiece(new Vector2(5,0),(int)PieceScript.Team.White,(int)PieceScript.Type.Sniper);
+		CreatePiece(new Vector2(6,0),(int)PieceScript.Team.White,(int)PieceScript.Type.Recon);
+		CreatePiece(new Vector2(7,0),(int)PieceScript.Team.White,(int)PieceScript.Type.Officer);
 		//pawns
-		CreatePiece(new Vector2(0,1),(int)Piece.Team.White,(int)Piece.Type.Soldier);
-		CreatePiece(new Vector2(1,2),(int)Piece.Team.White,(int)Piece.Type.Soldier);
-		CreatePiece(new Vector2(2,2),(int)Piece.Team.White,(int)Piece.Type.Soldier);
-		CreatePiece(new Vector2(3,3),(int)Piece.Team.White,(int)Piece.Type.Soldier);
-		CreatePiece(new Vector2(4,3),(int)Piece.Team.White,(int)Piece.Type.Soldier);
-		CreatePiece(new Vector2(5,2),(int)Piece.Team.White,(int)Piece.Type.Soldier);
-		CreatePiece(new Vector2(6,2),(int)Piece.Team.White,(int)Piece.Type.Soldier);
-		CreatePiece(new Vector2(7,1),(int)Piece.Team.White,(int)Piece.Type.Soldier);
+		CreatePiece(new Vector2(0,1),(int)PieceScript.Team.White,(int)PieceScript.Type.Soldier);
+		CreatePiece(new Vector2(1,2),(int)PieceScript.Team.White,(int)PieceScript.Type.Soldier);
+		CreatePiece(new Vector2(2,2),(int)PieceScript.Team.White,(int)PieceScript.Type.Soldier);
+		CreatePiece(new Vector2(3,3),(int)PieceScript.Team.White,(int)PieceScript.Type.Soldier);
+		CreatePiece(new Vector2(4,3),(int)PieceScript.Team.White,(int)PieceScript.Type.Soldier);
+		CreatePiece(new Vector2(5,2),(int)PieceScript.Team.White,(int)PieceScript.Type.Soldier);
+		CreatePiece(new Vector2(6,2),(int)PieceScript.Team.White,(int)PieceScript.Type.Soldier);
+		CreatePiece(new Vector2(7,1),(int)PieceScript.Team.White,(int)PieceScript.Type.Soldier);
 
 	//black team
 		//left to right, top to bottom
-		CreatePiece(new Vector2(0,7),(int)Piece.Team.Black,(int)Piece.Type.Officer);
-		CreatePiece(new Vector2(1,7),(int)Piece.Team.Black,(int)Piece.Type.Recon);
-		CreatePiece(new Vector2(2,7),(int)Piece.Team.Black,(int)Piece.Type.Sniper);
-		CreatePiece(new Vector2(3,7),(int)Piece.Team.Black,(int)Piece.Type.President);
-		CreatePiece(new Vector2(3,6),(int)Piece.Team.Black,(int)Piece.Type.General);
-		CreatePiece(new Vector2(5,7),(int)Piece.Team.Black,(int)Piece.Type.Sniper);
-		CreatePiece(new Vector2(6,7),(int)Piece.Team.Black,(int)Piece.Type.Recon);
-		CreatePiece(new Vector2(7,7),(int)Piece.Team.Black,(int)Piece.Type.Officer);
+		CreatePiece(new Vector2(0,7),(int)PieceScript.Team.Black,(int)PieceScript.Type.Officer);
+		CreatePiece(new Vector2(1,7),(int)PieceScript.Team.Black,(int)PieceScript.Type.Recon);
+		CreatePiece(new Vector2(2,7),(int)PieceScript.Team.Black,(int)PieceScript.Type.Sniper);
+		CreatePiece(new Vector2(3,7),(int)PieceScript.Team.Black,(int)PieceScript.Type.President);
+		CreatePiece(new Vector2(3,6),(int)PieceScript.Team.Black,(int)PieceScript.Type.General);
+		CreatePiece(new Vector2(5,7),(int)PieceScript.Team.Black,(int)PieceScript.Type.Sniper);
+		CreatePiece(new Vector2(6,7),(int)PieceScript.Team.Black,(int)PieceScript.Type.Recon);
+		CreatePiece(new Vector2(7,7),(int)PieceScript.Team.Black,(int)PieceScript.Type.Officer);
 		//pawns
-		CreatePiece(new Vector2(0,6),(int)Piece.Team.Black,(int)Piece.Type.Soldier);
-		CreatePiece(new Vector2(1,5),(int)Piece.Team.Black,(int)Piece.Type.Soldier);
-		CreatePiece(new Vector2(2,5),(int)Piece.Team.Black,(int)Piece.Type.Soldier);
-		CreatePiece(new Vector2(3,4),(int)Piece.Team.Black,(int)Piece.Type.Soldier);
-		CreatePiece(new Vector2(4,4),(int)Piece.Team.Black,(int)Piece.Type.Soldier);
-		CreatePiece(new Vector2(5,5),(int)Piece.Team.Black,(int)Piece.Type.Soldier);
-		CreatePiece(new Vector2(6,5),(int)Piece.Team.Black,(int)Piece.Type.Soldier);
-		CreatePiece(new Vector2(7,6),(int)Piece.Team.Black,(int)Piece.Type.Soldier);
+		CreatePiece(new Vector2(0,6),(int)PieceScript.Team.Black,(int)PieceScript.Type.Soldier);
+		CreatePiece(new Vector2(1,5),(int)PieceScript.Team.Black,(int)PieceScript.Type.Soldier);
+		CreatePiece(new Vector2(2,5),(int)PieceScript.Team.Black,(int)PieceScript.Type.Soldier);
+		CreatePiece(new Vector2(3,4),(int)PieceScript.Team.Black,(int)PieceScript.Type.Soldier);
+		CreatePiece(new Vector2(4,4),(int)PieceScript.Team.Black,(int)PieceScript.Type.Soldier);
+		CreatePiece(new Vector2(5,5),(int)PieceScript.Team.Black,(int)PieceScript.Type.Soldier);
+		CreatePiece(new Vector2(6,5),(int)PieceScript.Team.Black,(int)PieceScript.Type.Soldier);
+		CreatePiece(new Vector2(7,6),(int)PieceScript.Team.Black,(int)PieceScript.Type.Soldier);
 
 
 	}
@@ -89,12 +89,12 @@ public class Board : MonoBehaviour {
 		GameObject piece = Instantiate(piece_prefab,Vector3.zero,Quaternion.AngleAxis(-90.0f,Vector3.right)) as GameObject;
 		piece.transform.RotateAround(transform.position,Vector3.forward,180.0f);
 		piece.transform.parent = this.transform;
-		Piece pieceScript = piece.GetComponent<Piece>();
-		if(type==(int)Piece.Type.General)
+		PieceScript pieceScript = piece.GetComponent<PieceScript>();
+		if(type==(int)PieceScript.Type.General)
 			pieceScript.CreateGeneral(tileLocation,team);
 		else
 			pieceScript.CreatePiece(tileLocation,team,type);
-		if(team==(int)Piece.Team.White)
+		if(team==(int)PieceScript.Team.White)
 			whiteTeam.Add(pieceScript);
 		else
 			blackTeam.Add (pieceScript);

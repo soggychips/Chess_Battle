@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Piece : MonoBehaviour {
+public class Soldier : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
